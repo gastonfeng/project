@@ -230,7 +230,7 @@
                                         <tr>
                                             <td><b>Tags</b></td>
                                             <td colspan="2">
-                                                <t t-foreach="t.categ_ids" t-as="tag">
+                                                <t t-foreach="t.tag_ids" t-as="tag">
                                                     <t t-esc="tag.name"/>
                                                 </t>
                                             </td>
@@ -248,7 +248,7 @@
                                                 <b>Worklogs</b>
                                             </td>
                                         </tr>
-                                        <t t-foreach="t.work_ids" t-as="w">
+                                        <t t-foreach="t.timesheet_ids" t-as="w">
                                             <tr>
                                                 <td></td>
                                                 <td><b>Author</b></td>
@@ -259,7 +259,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td><b>Duration</b></td>
-                                                <td><t t-esc="w.hours"/> </td>
+                                                <td><t t-esc="w.amount"/> </td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
@@ -351,7 +351,7 @@
                                         <tr>
                                             <td><b>Tags</b></td>
                                             <td colspan="2">
-                                                <t t-foreach="i.categ_ids" t-as="tag">
+                                                <t t-foreach="i.tag_ids" t-as="tag">
                                                     <t t-esc="tag.name"/>
                                                 </t>
                                             </td>
