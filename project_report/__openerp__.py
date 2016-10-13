@@ -14,10 +14,10 @@ It is possible to see Issues, Tasks (summarized or fully detailed) as well as ch
 This module has been developed by Quentin TAWRY @ AbAKUS it-solutions
     """,
     'data': [
-        'project_report_data.xml',
-        'view/project_project_view.xml',
-        'report/project_report.xml',
-        'wizard/project_report_view.xml',
+        'data/project_report_data.xml',
+        'views/project_project_view.xml',
+        'reports/project_report.xml',
+        'wizards/project_report_view.xml',
         'security/ir.model.access.csv',
     ],
 }
