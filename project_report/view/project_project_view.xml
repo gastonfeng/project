@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        <act_window id="project_report_wizard_action"
+            name="Print Project Report"
+            src_model="project.project"
+            res_model="project.report.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+    </data>
+</openerp>
