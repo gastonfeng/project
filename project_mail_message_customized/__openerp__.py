@@ -4,7 +4,7 @@
     'name': "Mail Message improvements",
     'version': '9.0.1.0.0',
     'depends': ['mail'],
-    'author': "Valentin Thririon, AbAKUS it-solutions SARL",
+    'author': "Valentin Thirion, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
     'category': 'Social',
     'description': """
