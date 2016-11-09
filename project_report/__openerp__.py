@@ -1,6 +1,6 @@
 {
     'name': "Project Report",
-    'version': '9.0.1.0.3',
+    'version': '9.0.1.0.4',
     'depends': ['report', 'project'],
     'author': "Quentin Tawry, AbAKUS it-solutions PGmbH",
     'website': "http://www.abakusitsolutions.eu",

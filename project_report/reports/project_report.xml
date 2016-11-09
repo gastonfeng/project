@@ -267,7 +267,7 @@
                                                 </t>
                                                 <tr>
                                                     <td><b>Total worked time</b></td>
-                                                    <td colspan="2"><t t-esc="float(t.effective_hours)"/> </td>
+                                                    <td colspan="2"><t t-esc="float(t.effective_hours)"/> hours</td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
@@ -390,7 +390,7 @@
                                                 </t>
                                                 <tr>
                                                     <td colspan="2"><b>Total worked time</b></td>
-                                                    <td colspan="2"><t t-esc="float(total_worked_time)" /></td>
+                                                    <td colspan="2"><t t-esc="float(total_worked_time)" /> hours</td>
                                                 </tr>
                                             </t>
 
