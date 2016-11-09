@@ -248,7 +248,9 @@
                                                         <b>Worklogs</b>
                                                     </td>
                                                 </tr>
+						<t t-set="total_worked_time" t-value="0"/>
                                                 <t t-foreach="t.timesheet_ids" t-as="w">
+						    <t t-set="total_worked_time" t-value="total_worked_time + float(w.unit_amount)"/>
                                                     <tr>
                                                         <td></td>
                                                         <td><b>Author</b></td>
@@ -256,7 +258,7 @@
                                                         <td><b>Date</b></td>
                                                         <td>
                                                             <t t-esc="w.date"/>
-                                                            <b>during</b> <t t-esc="w.amount"/> hours
+                                                            <b>during</b> <t t-esc="w.unit_amount"/> hours
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -267,7 +269,7 @@
                                                 </t>
                                                 <tr>
                                                     <td><b>Total worked time</b></td>
-                                                    <td colspan="2"><t t-esc="float(t.effective_hours)"/> hours</td>
+                                                    <td colspan="2"><t t-esc="float(total_worked_time)"/> hours</td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
