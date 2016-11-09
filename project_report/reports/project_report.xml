@@ -406,9 +406,10 @@
                             </t>
                         </t>
 
-                        <h2>Comment</h2>
-                        <p><t t-esc="o.get_comments()"/> </p>
-
+                        <t t-if="o.get_comments()">
+                            <h2>Comment</h2>
+                            <p><t t-esc="o.get_comments()"/> </p>
+                        </t>
                     </div>
                 </t>
             </t>
