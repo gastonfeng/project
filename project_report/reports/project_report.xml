@@ -208,7 +208,7 @@
                                     <div style="page-break-inside: avoid; margin-top: 15px;">
                                         <h4><t t-esc="issue_index" />) <t t-esc="t.name"/></h4>
                                         <h5><i><b>Assigned to</b>: <t t-esc="t.user_id.partner_id.name"/></i></h5>
-                                        <table class="table table-condensed table-striped" style="border-top: 1px double black; margin-top: 10px; margin-bottom: 10px; border-bottom: 1px double black;">
+                                        <table class="table table-condensed" style="border-top: 1px double black; margin-top: 10px; margin-bottom: 10px; border-bottom: 1px double black;">
                                             <t t-if="t.description">
                                                 <tr>
                                                     <td><b>Description</b></td>
@@ -249,6 +249,38 @@
                                             </t>
 
                                             <t t-if="len(t.timesheet_ids) &gt; 0">
+                                                <td colspan="5">
+                                                    <b>Worklogs</b>
+                                                    <table class="table table-condensed table-striped">
+                                                        <tr class="abakusBordered">
+                                                            <th>Date</th>
+                                                            <th width="45%">Description</th>
+                                                            <th style="width: 130px;">Support</th>
+                                                            <th>Type</th>
+                                                            <th>Quantity</th>
+                                                            <th>Invoiceable</th>
+                                                        </tr>
+                                                        <t t-set="total_worked_time" t-value="0"/>
+                                                        <tr t-foreach="t.timesheet_ids" t-as="w">
+                                                            <t t-set="total_worked_time" t-value="total_worked_time + float(w.unit_amount)"/>
+                                                            <td><t t-esc="w.date"/></td>
+                                                            <td><t t-esc="w.name"/> </td>
+                                                            <td><t t-esc="w.user_id.partner_id.name"/></td>
+                                                            <td>
+                                                                 <t t-if="w.on_site==True">	
+                                                                     OS
+                                                                </t>
+                                                                <t t-if="w.on_site==False">
+                                                                    SD
+                                                                </t>
+                                                            </td>
+                                                            <td><t t-esc="w.unit_amount"/> hours</td>
+                                                            <td><t t-esc="w.to_invoice.name"/></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                
+                                                <!--
                                                 <tr>
                                                     <td colspan="5">
                                                         <b>Worklogs</b>
@@ -279,6 +311,7 @@
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
+-->
                                             </t>
                                         </table>
                                         <hr/>
@@ -338,7 +371,7 @@
                                     <div style="page-break-inside: avoid; margin-top: 15px;">
                                         <h4><t t-esc="issue_index" />) <t t-esc="i.name"/></h4>
                                         <h5><i><b>Assigned to</b>: <t t-esc="i.user_id.partner_id.name"/></i></h5>
-                                        <table class="table table-condensed table-striped" style="border-top: 1px double black; margin-top: 15px; margin-bottom: 15px; border-bottom: 1px double black;">
+                                        <table class="table table-condensed" style="border-top: 1px double black; margin-top: 15px; margin-bottom: 15px; border-bottom: 1px double black;">
                                             <t t-if="i.description">
                                                 <tr>
                                                     <td><b>Description</b></td>
@@ -381,6 +414,37 @@
                                                 <tr>
                                                     <td colspan="5">
                                                         <b>Worklogs</b>
+                                                        <table class="table table-condensed table-striped">
+                                                            <tr class="abakusBordered">
+                                                                <th>Date</th>
+                                                                <th width="45%">Description</th>
+                                                                <th style="width: 130px;">Support</th>
+                                                                <th>Type</th>
+                                                                <th>Quantity</th>
+                                                                <th>Invoiceable</th>
+                                                            </tr>
+                                                            <t t-set="total_worked_time" t-value="0"/>
+                                                            <tr t-foreach="i.timesheet_ids" t-as="w">
+                                                                <t t-set="total_worked_time" t-value="total_worked_time + float(w.unit_amount)"/>
+                                                                <td><t t-esc="w.date"/></td>
+                                                                <td><t t-esc="w.name"/> </td>
+                                                                <td><t t-esc="w.user_id.partner_id.name"/></td>
+                                                                <td>
+                                                                     <t t-if="w.on_site==True">	
+                                                                         OS
+                                                                    </t>
+                                                                    <t t-if="w.on_site==False">
+                                                                        SD
+                                                                    </t>
+                                                                </td>
+                                                                <td><t t-esc="w.unit_amount"/> hours</td>
+                                                                <td><t t-esc="w.to_invoice.name"/></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <!--
+                                                    <td colspan="5">
+                                                        <b>Worklogs</b>
                                                     </td>
                                                 </tr>
                                                 <t t-set="total_worked_time" t-value="0"/>
@@ -402,6 +466,8 @@
                                                         <td colspan="3"><t t-esc="t.name"/> </td>
                                                     </tr>
                                                 </t>
+-->
+                                                </tr>
                                                 <tr>
                                                     <td colspan="2"><b>Total worked time</b></td>
                                                     <td colspan="2"><t t-esc="float(total_worked_time)" /> hours</td>
