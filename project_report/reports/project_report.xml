@@ -172,9 +172,11 @@
                             <p style="page-break-before:always;"> </p>
                             <t t-if="o.tasks_type() == 'summary'">
                                 <h2>Tasks summary</h2>
+                                <t t-set="issue_index" t-value="0"/>
                                 <table class="table table-condensed table-striped" style="border-top: 1px solid black; margin-top: 10px; margin-bottom: 10px; border-bottom: 1px solid black;">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Stage</th>
                                             <th>Task</th>
                                             <th>Assigned to</th>
@@ -184,7 +186,9 @@
                                     </thead>
                                     <tbody>
                                         <t t-foreach="o.get_tasks_for_report()" t-as="t">
+                                            <t t-set="issue_index" t-value="issue_index + 1"/>
                                             <tr>
+                                                <td><t t-esc="issue_index" /></td>
                                                 <td><t t-esc="t.stage_id.name"/></td>
                                                 <td><t t-esc="t.name"/></td>
                                                 <td><t t-esc="t.user_id.name"/> </td>
@@ -198,9 +202,11 @@
                             </t>
                             <t t-if="o.tasks_type() == 'detailled'">
                                 <h2>Tasks detailled</h2>
+                                <t t-set="issue_index" t-value="0"/>
                                 <t t-foreach="o.get_tasks_for_report()" t-as="t">
+                                    <t t-set="issue_index" t-value="issue_index + 1"/>
                                     <div style="page-break-inside: avoid; margin-top: 15px;">
-                                        <h4><t t-esc="t.name"/></h4>
+                                        <h4><t t-esc="issue_index" />) <t t-esc="t.name"/></h4>
                                         <h5><i><b>Assigned to</b>: <t t-esc="t.user_id.partner_id.name"/></i></h5>
                                         <table class="table table-condensed table-striped" style="border-top: 1px double black; margin-top: 10px; margin-bottom: 10px; border-bottom: 1px double black;">
                                             <t t-if="t.description">
@@ -284,9 +290,11 @@
                             <p style="page-break-before:always;"> </p>
                             <t t-if="o.issues_type() == 'summary'">
                                 <h2>Issues summary</h2>
+                                <t t-set="issue_index" t-value="0"/>
                                 <table class="table table-condensed table-striped" style="page-break-inside: avoid;">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Stage</th>
                                             <th>Issue</th>
                                             <th>Cr. Date</th>
@@ -297,7 +305,9 @@
                                     </thead>
                                     <tbody>
                                         <t t-foreach="o.get_issues_for_report()" t-as="i">
+                                            <t t-set="issue_index" t-value="issue_index + 1"/>
                                             <tr>
+                                                <td><t t-esc="issue_index" /></td>
                                                 <td><t t-esc="i.stage_id.name"/></td>
                                                 <td>
                                                     <t t-esc="i.name"/><br />
@@ -322,9 +332,11 @@
                             </t>
                             <t t-if="o.issues_type() == 'detailled'">
                                 <h2>Issues detailled</h2>
+                                <t t-set="issue_index" t-value="0"/>
                                 <t t-foreach="o.get_issues_for_report()" t-as="i">
+                                    <t t-set="issue_index" t-value="issue_index + 1"/>
                                     <div style="page-break-inside: avoid; margin-top: 15px;">
-                                        <h4><t t-esc="i.name"/></h4>
+                                        <h4><t t-esc="issue_index" />) <t t-esc="i.name"/></h4>
                                         <h5><i><b>Assigned to</b>: <t t-esc="i.user_id.partner_id.name"/></i></h5>
                                         <table class="table table-condensed table-striped" style="border-top: 1px double black; margin-top: 15px; margin-bottom: 15px; border-bottom: 1px double black;">
                                             <t t-if="i.description">
