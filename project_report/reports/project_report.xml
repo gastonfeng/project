@@ -42,6 +42,12 @@
                                     <t t-if="o.use_issues"><td>Issues</td></t>
                                 </tr>
                                 <tr>
+                                    <td>Description</td>
+                                    <td colspan="3">
+                                        <span t-esc="o.project_description"/>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Content</td>
                                     <td ></td>
                                     <t t-if="o.use_tasks"><td><t t-esc="len(o.tasks)"/> Tasks</td></t>
