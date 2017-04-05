@@ -6,11 +6,11 @@
             <field name="name">My Tasks</field>
             <field name="res_model">project.task</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,kanban,calendar,form,graph</field>
+            <field name="view_mode">kanban,tree,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval=""/>
+            <field name="domain" eval="[('stage_id.closed', '=', False)]"/>
             <field name="context">{"search_default_my":1}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="search_view_id" ref="project.view_task_search_form"/>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -24,9 +24,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('stage_id', '!=', 'Closed'), ('stage_id', '!=', 'Done'), ('stage_id', '!=', 'Cancelled')]"/>
             <field name="context">{"search_default_unassigned":1}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="search_view_id" ref="project.view_task_search_form"/>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -40,9 +39,25 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('stage_id', '!=', 'Closed'), ('stage_id', '!=', 'Done'), ('stage_id', '!=', 'Cancelled')]"/>
+            <field name="domain" eval="[('stage_id.closed', '=', False)]"/>
             <field name="context">{'search_default_Current': 1}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <!-- Closed Tasks -->
+        <record model="ir.actions.act_window" id="project_service_desk.act_tasks_closed">
+            <field name="name">Closed Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,calendar,form,graph</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain" eval="[('stage_id.closed', '=', True)]"/>
+            <field name="context">{'search_default_Current': 1}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -74,7 +89,13 @@
                   groups="project.group_project_manager,project.group_project_user"
                   parent="project_service_desk.menu_tasks"
                   action="project_service_desk.act_tasks_open"
-                  icon="facalendar"
                   sequence="15"/>
+
+        <menuitem name="Closed Tasks"
+                  id="project_service_desk.menu_tasks_closed"
+                  groups="project.group_project_manager,project.group_project_user"
+                  parent="project_service_desk.menu_tasks"
+                  action="project_service_desk.act_tasks_closed"
+                  sequence="20"/>
     </data>
 </openerp>

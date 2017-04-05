@@ -1,35 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!-- My Worklogs -->
-        <record model="ir.actions.act_window" id="project_service_desk.act_timesheet_worklogs_my">
-            <field name="name">My Worklogs</field>
-            <field name="res_model">project.task</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,kanban,calendar,form,graph</field>
-            <field name="view_id" eval="False"/>
-            <field name="domain" eval=""/>
-            <field name="context">{"search_default_my":1}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
-            <field name="help" type="html">
-                <p>
-                </p>
+        
+        <!-- My Worklogs Tree -->
+        <record model="ir.ui.view" id="project_service_desk.timesheet_worklogs_tree_view">
+            <field name="name">project_service_desk.timesheet_worklogs_tree_view</field>
+            <field name="model">account.analytic.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_begin" />
+                    <field name="user_id" />
+                    <field name="account_id" />
+                    <field name="name" />
+                    <field name="unit_amount" />
+                    <field name="to_invoice" />
+                    <field name="on_site" />
+                </tree>
             </field>
         </record>
 
+        <!-- My Worklogs Form -->
+        <record model="ir.ui.view" id="project_service_desk.timesheet_worklogs_form_view">
+            <field name="name">project_service_desk.timesheet_worklogs_form_view</field>
+            <field name="model">account.analytic.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="user_id" />
+                            <field name="date_begin" />
+                            <field name="unit_amount" string="Time (h)" />
+                            <field name="to_invoice" />
+                            <field name="on_site" />
+                        </group>
+                        <group>
+                            <field name="account_id" />
+                            <field name="task_id" />
+                            <field name="issue_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- My Worklogs Calendar -->
         <record model="ir.actions.act_window" id="project_service_desk.act_timesheet_worklogs_my">
             <field name="name">Manage Worklogs</field>
             <field name="res_model">account.analytic.line</field>
             <field name="view_type">form</field>
             <field name="view_mode">calendar,form,tree</field>
             <field name="context">{'search_default_my_worklogs': 1, 'default_is_timesheet': 1}</field>
-            <field name="search_view_id" ref="view_manage_worklogs_filter"/>
+            <field name="search_view_id" ref="hr_analytic_timesheet_improvements.view_manage_worklogs_filter"/>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                         (0, 0, {'view_mode': 'calendar', 'sequence': 5, 'view_id': ref('hr_analytic_timesheet_improvements.view_manage_worklogs_calendar')}),
+                         (0, 0, {'view_mode': 'tree', 'sequence': 10, 'view_id': ref('project_service_desk.timesheet_worklogs_tree_view')}),
+                         (0, 0, {'view_mode': 'form', 'sequence': 15, 'view_id': ref('project_service_desk.timesheet_worklogs_form_view')}),
+                         ]"
+                   />
         </record>
 
         <menuitem name="Timesheet"
                   id="project_service_desk.menu_timesheet"
                   groups="project.group_project_manager,project.group_project_user"
                   parent="project_service_desk.menu_main_service_desk"
+                  action="project_service_desk.act_timesheet_worklogs_my"
                   sequence="15"/>
 
         <menuitem name="My Worklogss"

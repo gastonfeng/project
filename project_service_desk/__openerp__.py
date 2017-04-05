@@ -4,12 +4,16 @@
     'name': "Odoo Service desk",
     'version': '9.0.1.0.0',
     'depends': [
-        'project'
+        'project',
+        'hr_analytic_timesheet_improvements'
     ],
     'author': "Valentin Thirion, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
     'category': 'Project',
     'description': """
+Odoo Service Desk
+
+This modules creates an environment for Service Desk People to work, with all their needed forms and views.
 This module has been developed by Valentin Thirion @ AbAKUS it-solutions""",
     'data': [
         'views/service_view.xml',

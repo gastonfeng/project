@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <!-- Projects Kanban -->
+        <record model="ir.ui.view" id="project_service_desk.projects_kanban_view">
+            <field name="name">project_service_desk.projects_kanban_view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='o_primary']" position="after">
+                    <div class="o_primary">
+                        <span><t t-esc="record.project_type"/></span>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Projects Form -->
+        <record model="ir.ui.view" id="project_service_desk.project_form_view">
+            <field name="name">project_service_desk.project_form_view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options_active']" position="after">
+                     <div name="project_info">
+                        <div>
+                            <label for="project_type" class="oe_inline"/>
+                            <field name="project_type" string="Project Type" class="oe_inline"/>
+                         </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
         <!-- My Projects -->
         <record model="ir.actions.act_window" id="project_service_desk.act_projects_my">
             <field name="name">My Projects</field>
@@ -8,9 +39,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval=""/>
+            <field name="domain" eval="[('state', '=', 'open'), ('message_is_follower', '=', True)]"/>
             <field name="context">{"search_default_my":1}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
             <field name="help" type="html">
                 <p>
                 </p>
@@ -24,9 +54,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('project_type', '=', 'support')]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval="[('state', '=', 'open'), ('project_type', '=', 'support')]"/>
+            <field name="context">{'default_project_type': 'support'}</field>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -40,9 +69,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('project_type', '=', 'installation')]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval="[('state', '=', 'open'), ('project_type', '=', 'installation')]"/>
+            <field name="context">{'default_project_type': 'installation'}</field>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -56,9 +84,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('project_type', '=', 'internal')]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval="[('state', '=', 'open'), ('project_type', '=', 'internal')]"/>
+            <field name="context">{'default_project_type': 'internal'}</field>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -72,9 +99,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('project_type', '=', 'development')]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval="[('state', '=', 'open'), ('project_type', '=', 'development')]"/>
+            <field name="context">{'default_project_type': 'development'}</field>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -88,9 +114,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[('project_type', '=', 'development')]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval="[('state', '=', 'open'), ('project_type', '=', 'other')]"/>
+            <field name="context">{'default_project_type': 'other'}</field>
             <field name="help" type="html">
                 <p>
                 </p>
@@ -104,9 +129,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
             <field name="view_id" eval="False"/>
-            <field name="domain" eval="[]"/>
-            <field name="context">{}</field>
-<!--            <field name="search_view_id" ref="view_project_issue_filter1"/>-->
+            <field name="domain" eval=""/>
+            <field name="context">{'search_default_Current': 1}</field>
             <field name="help" type="html">
                 <p>
                 </p>
