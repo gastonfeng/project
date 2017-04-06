@@ -24,23 +24,23 @@
             <field name="name">project_service_desk.timesheet_worklogs_form_view</field>
             <field name="model">account.analytic.line</field>
             <field name="arch" type="xml">
-                <form>
+                <form string="Worklog">
                     <group>
                         <group>
                             <field name="user_id" />
-                            <field name="date_begin" />
-                            <field name="unit_amount" string="Duration" widget="float_time"/>
-                            <field name="to_invoice" />
-                            <field name="on_site" />
-                        </group>
-                        <group>
-                            <field name="account_id" domain="[('account_type', '=', 'normal'), ('project_count', '>', 0), ('first_subscription_id.project_id', '!=', 'development'), ('first_subscription_id.project_id', '!=', 'other'), ('first_subscription_id.project_id.state', '=', 'open')]"/>
-                            <field name="task_id" />
-                            <field name="issue_id" />
                         </group>
                     </group>
-                    <group>
-                        <field name="name" />
+                    <group name="global" col="4">
+                        <field name="account_id" string="Project" domain="[('account_type', '=', 'normal'), ('project_count', '&gt;', 0), ('first_subscription_id.project_id', '!=', 'development'), ('first_subscription_id.project_id', '!=', 'other'), ('first_subscription_id.project_id.state', '=', 'open')]" colspan="4"/>
+                        <field name="issue_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('task_id', '!=', False)]}" />
+                        <field name="task_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('issue_id', '!=', False)]}" />
+                        <field name="date_begin" string="Date" colspan="2"/>
+                        <field name="unit_amount" string="Duration" widget="float_time"/>
+                        <field name="on_site"/>
+                        <field name="to_invoice" string="invoicable at"/>
+                    </group>
+                    <group string="Description">
+                        <field name="name" nolabel="1"/>
                     </group>
                 </form>
             </field>
