@@ -34,7 +34,7 @@
                             <field name="on_site" />
                         </group>
                         <group>
-                            <field name="account_id" domain="[('account_type', '=', 'normal'), ('project_count', '>', 0), ('first_subscription_id.project_id', '!=', 'development'), ('first_subscription_id.project_id', '!=', 'other')]"/>
+                            <field name="account_id" domain="[('account_type', '=', 'normal'), ('project_count', '>', 0), ('first_subscription_id.project_id', '!=', 'development'), ('first_subscription_id.project_id', '!=', 'other'), ('first_subscription_id.project_id.state', '=', 'open')]"/>
                             <field name="task_id" />
                             <field name="issue_id" />
                         </group>
