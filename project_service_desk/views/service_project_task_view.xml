@@ -3,7 +3,7 @@
     <data>
         <!-- My Tasks -->
         <record model="ir.actions.act_window" id="project_service_desk.act_tasks_my">
-            <field name="name">My Tasks</field>
+            <field name="name">My Open Tasks</field>
             <field name="res_model">project.task</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,calendar,form,graph</field>
@@ -65,6 +65,22 @@
             </field>
         </record>
 
+        <!-- All Tasks -->
+        <record model="ir.actions.act_window" id="project_service_desk.act_tasks_all">
+            <field name="name">All Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,calendar,form,graph</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain" eval=""/>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+                <p>
+                </p>
+            </field>
+        </record>
+
         <menuitem name="Tasks"
                   id="project_service_desk.menu_tasks"
                   groups="project.group_project_manager,project.group_project_user"
@@ -98,5 +114,12 @@
                   parent="project_service_desk.menu_tasks"
                   action="project_service_desk.act_tasks_closed"
                   sequence="20"/>
+
+        <menuitem name="All Tasks"
+                  id="project_service_desk.menu_tasks_all"
+                  groups="project.group_project_manager,project.group_project_user"
+                  parent="project_service_desk.menu_tasks"
+                  action="project_service_desk.act_tasks_all"
+                  sequence="25"/>
     </data>
 </openerp>
