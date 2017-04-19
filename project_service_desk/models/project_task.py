@@ -9,14 +9,19 @@ class project_task_service_desk(models.Model):
     _inherit = ['project.task']
 
     def _get_default_project_id(self, cr, uid, context=None):
+        project_id = False
         if context is None:
             context = {}
-        _logger.debug("\n\n CONTEXT: %s", context)
         if 'default_analytic_account_id' in context:
             analytic_account = self.pool.get('account.analytic.account').browse(cr, uid, context['default_analytic_account_id'], context=context)
-            if analytic_account and analytic_account.first_subscription_id.project_id:
-                return analytic_account.first_subscription_id.project_id.id
-            raise UserError(_('The selected Project (%s) is not linked to a specific Project in Odoo. This way, the newly created Task is not linked to the correct Project. Please, correct this.') % analytic_account.name)
+            if analytic_account and len(analytic_account.project_ids) > 0:
+                project_id = analytic_account.project_ids[0]
+            if analytic_account and len(analytic_account.subscription_ids) > 0:
+                if analytic_account.subscription_ids[0].project_id:
+                    project_id = analytic_account.subscription_ids[0].project_id
+        if project_id != False:
+            return project_id.id
+        raise UserError(_('You have not selected a Project (or the selected project is not valid). This way, the newly created Task (%s) is not linked to the correct Project. Please, correct this.') % self.name)
         return False
 
     _defaults = {
