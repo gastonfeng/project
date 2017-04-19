@@ -13,8 +13,11 @@ class project_issue_service_desk(models.Model):
         
         if 'default_analytic_account_id' in context:
             analytic_account = self.pool.get('account.analytic.account').browse(cr, uid, context['default_analytic_account_id'], context=context)
-            if analytic_account and analytic_account.first_subscription_id.project_id:
-                return analytic_account.first_subscription_id.project_id.id
+            if analytic_account and len(analytic_account.project_ids) > 0:
+                return analytic_account.project_ids[0].id
+            if analytic_account and len(analytic_account.subscription_ids) > 0:
+                if analytic_account.subscription_ids[0].project_id:
+                    return analytic_account.subscription_ids[0].project_id.id
             raise UserError(_('The selected Project (%s) is not linked to a specific Project in Odoo. This way, the newly created Issue is not linked to the correct Project. Please, correct this.') % analytic_account.name)
         return False
 
