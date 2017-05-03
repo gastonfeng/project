@@ -21,7 +21,6 @@ class project_task_service_desk(models.Model):
                     project_id = analytic_account.subscription_ids[0].project_id
         if project_id != False:
             return project_id.id
-        raise UserError(_('You have not selected a Project (or the selected project is not valid). This way, the newly created Task (%s) is not linked to the correct Project. Please, correct this.') % self.name)
         return False
 
     _defaults = {
