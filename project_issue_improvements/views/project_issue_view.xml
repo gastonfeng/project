@@ -27,7 +27,7 @@
                 <xpath expr="//sheet/div[@class='oe_title']" position="replace">
                     <group id="global_info">
                         <group>
-                            <field name="project_id" on_change="on_change_project(project_id)" context="{'default_use_issues':1}"/>
+                            <field name="project_id" domain="[('state','not in', ('close', 'cancelled'))]" on_change="on_change_project(project_id)" context="{'default_use_issues':1}"/>
                         </group>
                         <group>
                             <field name="partner_id" on_change="onchange_partner_id(partner_id)"/>
@@ -38,8 +38,6 @@
                     <h2><field name="name" /></h2>
                     <hr />
                 </xpath>
-
-
 
                 <!-- Adds the custommer feedback -->
                 <xpath expr="//notebook[last()]" position="inside">
