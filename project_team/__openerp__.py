@@ -14,6 +14,7 @@
         'views/project_team_view.xml',
         'views/project_issue_view.xml',
         'views/project_task_view.xml',
+        'views/project_project_view.xml',
 
         'security/ir.model.access.csv',
     ],

@@ -15,5 +15,6 @@ class ProjectProject(models.Model):
     team_id = fields.Many2one('project.team', string="Project Team")
 
     @api.onchange('team_id')
-    def get_team_members(self):
-        self.team_member_ids = [(6,0,[rec.id for rec in self.team_id.team_member_ids])]
+    def set_members_and_manager(self):
+        self.update({'team_member_ids': [(6, 0, [rec.id for rec in self.team_id.team_member_ids])]})
+        self.user_id = self.team_id.team_leader_id
