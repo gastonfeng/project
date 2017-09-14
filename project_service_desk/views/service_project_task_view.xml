@@ -92,6 +92,7 @@
                     <filter string="Support Tasks" name="support_tickets" domain="[('project_id.project_type', '=', 'support')]" />
                     <filter string="Development Tasks" name="development_tickets" domain="[('project_id.project_type', '=', 'development')]" />
                     <filter string="Installation Tasks" name="installation_tickets" domain="[('project_id.project_type', '=', 'installation')]" />
+                    <filter string="Internal Tasks" name="internal_tickets" domain="[('project_id.project_type', '=', 'internal')]" />
                     <filter string="Other Tasks" name="other_tickets" domain="[('project_id.project_type', '=', 'other')]" />
                     <separator/>
                 </xpath>
