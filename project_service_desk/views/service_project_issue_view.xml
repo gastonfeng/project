@@ -95,6 +95,10 @@
                     <filter string="Other Tickets" name="other_tickets" domain="[('project_id.project_type', '=', 'other')]" />
                     <separator/>
                 </xpath>
+                <xpath expr="//group" position="inside">
+                    <separator/>
+                    <filter string="Project Type" context="{'group_by':'project_type'}"/>
+                </xpath>
             </field>
         </record>
 

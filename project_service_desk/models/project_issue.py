@@ -8,6 +8,8 @@ _logger = logging.getLogger(__name__)
 class project_issue_service_desk(models.Model):
     _inherit = ['project.issue']
 
+    project_type = fields.Selection(related='project_id.project_type', string='Project Type', store=True)
+
     def _get_default_project_id(self, cr, uid, context=None):
         project_id = False
         if context is None:
