@@ -81,6 +81,23 @@
             </field>
         </record>
 
+        <!-- Search Tasks -->
+        <record model="ir.ui.view" id="project_task_search_service_desk">
+           <field name="name">project_task_search_support_project</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='unassigned']" position="after">
+                    <separator/>
+                    <filter string="Support Tasks" name="support_tickets" domain="[('project_id.project_type', '=', 'support')]" />
+                    <filter string="Development Tasks" name="development_tickets" domain="[('project_id.project_type', '=', 'development')]" />
+                    <filter string="Installation Tasks" name="installation_tickets" domain="[('project_id.project_type', '=', 'installation')]" />
+                    <filter string="Other Tasks" name="other_tickets" domain="[('project_id.project_type', '=', 'other')]" />
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
         <menuitem name="Tasks"
                   id="project_service_desk.menu_tasks"
                   groups="project.group_project_manager,project.group_project_user"

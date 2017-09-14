@@ -81,6 +81,23 @@
             </field>
         </record>
 
+        <!-- Search Tickets -->
+        <record model="ir.ui.view" id="project_issue_search_service_desk">
+           <field name="name">project_issue_search_support_project</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue_improvements.view_project_issue_filter1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='unassigned']" position="after">
+                    <separator/>
+                    <filter string="Support Tickets" name="support_tickets" domain="[('project_id.project_type', '=', 'support')]" />
+                    <filter string="Development Tickets" name="development_tickets" domain="[('project_id.project_type', '=', 'development')]" />
+                    <filter string="Installation Tickets" name="installation_tickets" domain="[('project_id.project_type', '=', 'installation')]" />
+                    <filter string="Other Tickets" name="other_tickets" domain="[('project_id.project_type', '=', 'other')]" />
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
         <menuitem name="Tickets"
             id="project_service_desk.menu_tickets"
             groups="project.group_project_manager,project.group_project_user"

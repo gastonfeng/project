@@ -66,6 +66,28 @@
                    />
         </record>
 
+        <!-- Search Timesheets -->
+        <record model="ir.ui.view" id="project_timesheets_search_service_desk">
+           <field name="name">project_timesheets_search_service_desk</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_analytic_timesheet_improvements.view_manage_worklogs_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_worklogs']" position="after">
+                    <field name="user_id"/>
+                    <field name="account_id"/>
+                    <field name="name"/>
+                    <field name="issue_id"/>
+                    <field name="task_id"/>
+                    <separator/>
+                    <filter string="Support WL" name="support_analytic_lines" domain="['|', ('task_id.project_id.project_type', '=', 'support'), ('issue_id.project_id.project_type', '=', 'support')]" />
+                    <filter string="Development WL" name="development_analytic_lines" domain="['|', ('task_id.project_id.project_type', '=', 'development'), ('issue_id.project_id.project_type', '=', 'development')]" />
+                    <filter string="Installation WL" name="installation_analytic_lines" domain="['|', ('task_id.project_id.project_type', '=', 'installation'), ('issue_id.project_id.project_type', '=', 'installation')]" />
+                    <filter string="Other WL" name="other_tickets" domain="['|', ('task_id.project_id.project_type', '=', 'other'), ('issue_id.project_id.project_type', '=', 'other')]" />
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
         <menuitem name="Timesheet"
                   id="project_service_desk.menu_timesheet"
                   groups="project.group_project_manager,project.group_project_user"
