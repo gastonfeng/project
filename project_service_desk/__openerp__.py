@@ -5,7 +5,8 @@
     'version': '9.0.1.0.0',
     'depends': [
         'project',
-        'hr_analytic_timesheet_improvements'
+        'hr_analytic_timesheet_improvements',
+        'project_generic_close_stage'
     ],
     'author': "Valentin Thirion, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
