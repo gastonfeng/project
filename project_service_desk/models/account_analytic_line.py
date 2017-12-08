@@ -18,3 +18,7 @@ class account_analytic_line_service_desk(models.Model):
             self.issue_id.action_close()
         elif self.task_id:
             self.task_id.action_close()
+
+    @api.multi
+    def delete_worklog(self):
+        self.unlink()

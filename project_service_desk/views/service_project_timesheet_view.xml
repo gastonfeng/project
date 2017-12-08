@@ -49,6 +49,9 @@
                     <group string="Description">
                         <field name="name" nolabel="1"/>
                     </group>
+                    <group>
+                        <button name="delete_worklog" type="object" string="Delete" />
+                    </group>
                 </form>
             </field>
         </record>
