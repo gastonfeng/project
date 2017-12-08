@@ -9,9 +9,10 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//header" position="inside">
+                        <button class="btn-primary" name="action_close" string="Close Task" type="object" attrs="{'invisible': ['|', ('project_id', '=', False), ('is_closed', '=', True)]}" />
+                    </xpath>
+                    <xpath expr="//field[@name='user_id']" position="after">
                         <field name="is_closed" invisible="1" />
-                        <button name="action_open" string="Open Task" type="object" attrs="{'invisible': ['|', ('project_id', '!=', False), ('is_closed', '=', False)]}" />
-                        <button class="btn-primary" name="action_close" string="Close Task" type="object" attrs="{'invisible': ['|', ('project_id', '!=', False), ('is_closed', '=', True)]}" />
                     </xpath>
                 </data>
             </field>

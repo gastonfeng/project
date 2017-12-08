@@ -12,10 +12,6 @@ class ProjectTask(models.Model):
     is_closed = fields.Boolean(related='stage_id.close_stage')
 
     @api.one
-    def action_open(self):
-        self.write({'stage_id': False})
-
-    @api.one
     def action_close(self):
 
         stage = self.env['project.task.type'].search([('close_stage', '=', True)])
