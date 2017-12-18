@@ -8,8 +8,16 @@ _logger = logging.getLogger(__name__)
 class account_analytic_line_service_desk(models.Model):
     _inherit = ['account.analytic.line']
 
+    project_id = fields.Many2one('project.project', string="Project") # Only used to search on the form and directlty set the correct Analytic Account
     issue_state = fields.Many2one(related='issue_id.stage_id', string="Issue State")
     task_state = fields.Many2one(related='task_id.stage_id', string="Task State")
+
+    @api.multi
+    @api.onchange('project_id')
+    def set_correct_analytic_account(self):
+        for line in self:
+            if line.project_id:
+                line.account_id = line.project_id.analytic_account_id
 
     @api.multi
     def close_task_issue(self):

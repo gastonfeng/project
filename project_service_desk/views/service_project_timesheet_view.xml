@@ -30,7 +30,8 @@
                             <field name="user_id"/>
                         </group>
                         <group colspan="4">
-                            <field name="account_id" string="Project" domain="[('account_type', '=', 'normal'), ('project_count', '&gt;', 0), ('first_subscription_id.project_id', '!=', 'development'), ('first_subscription_id.project_id', '!=', 'other'), ('first_subscription_id.project_id.state', '=', 'open'), '|', ('use_tasks', '=', True), ('use_issues', '=', True)]" colspan="3"/>
+                            <field name="account_id" invisible="1" />
+                            <field name="project_id" string="Project" domain="[('state', '!=', 'close')]" colspan="3" required="True" />
                         </group>
                         <group colspan="2">
                             <field name="issue_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('task_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
