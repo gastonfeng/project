@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <!-- Tasks Tree view -->
+        <record model="ir.ui.view" id="project_service_desk.tasks_tree">
+            <field name="name">project.service.desk.task.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="create_date" />
+                </xpath>
+            </field>
+        </record>
+
         <!-- My Tasks -->
         <record model="ir.actions.act_window" id="project_service_desk.act_tasks_my">
             <field name="name">My Open Tasks</field>
