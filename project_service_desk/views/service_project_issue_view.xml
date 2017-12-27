@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <!-- Tickets Tree view -->
+        <record model="ir.ui.view" id="project_service_desk.tickets_tree">
+            <field name="name">project.service.desk.tickets.tree</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_feature_tree_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="create_date" />
+                </xpath>
+            </field>
+        </record>
+
         <!-- My Tickets -->
         <record model="ir.actions.act_window" id="project_service_desk.act_tickets_my">
             <field name="name">My Open Tickets</field>
