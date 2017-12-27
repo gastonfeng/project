@@ -26,13 +26,11 @@ class account_analytic_line_service_desk(models.Model):
                 line.account_id = line.project_id.analytic_account_id
 
     @api.model
-    def write(self, vals):
+    def create(self, vals):
         if 'project_id' not in vals:
-            _logger.debug("TEST\n\n NO PROJECT GIVEN")
             project_id = self.env['project.project'].search([('analytic_account_id', '=', vals['account_id'])])
-            _logger.debug("TEST\n\n PROJECT %s", project_id)
             vals.update({'project_id': project_id.id})
-        rec = super(account_analytic_line_service_desk, self).write(vals)
+        rec = super(account_analytic_line_service_desk, self).create(vals)
         return rec
 
     @api.multi
