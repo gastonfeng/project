@@ -17,6 +17,10 @@
                         </group>
                     </group>
                 </xpath>
+				<!-- Linked SO -->
+				<xpath expr="(//field[@name='planned_hours'])" position="after">
+					<field name="sale_order_id" />
+				</xpath>
 			</field>
 		</record>
 	</data>
