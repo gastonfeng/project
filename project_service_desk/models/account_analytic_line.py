@@ -6,13 +6,14 @@ from openerp.exceptions import UserError
 _logger = logging.getLogger(__name__)
 
 
-class account_analytic_line_service_desk(models.Model):
+class AccountAnalyticLineServiceDesk(models.Model):
     _inherit = ['account.analytic.line']
 
     def _get_default_project(self):
         if self.account_id:
             if len(self.account_id.project_ids) > 0:
-                return self.account_id.project_ids[0].id
+                if self.account_id.project_ids[0] and self.account_id.project_ids[0].id:
+                    return self.account_id.project_ids[0].id
         return False
 
     project_id = fields.Many2one('project.project', string="Project", default=lambda self: self._get_default_project())
@@ -33,7 +34,7 @@ class account_analytic_line_service_desk(models.Model):
             project_id = self.env['project.project'].search([('analytic_account_id', '=', vals['account_id'])])
             if project_id:
                 vals.update({'project_id': project_id.id})
-        rec = super(account_analytic_line_service_desk, self).create(vals)
+        rec = super(AccountAnalyticLineServiceDesk, self).create(vals)
         return rec
 
     @api.multi
