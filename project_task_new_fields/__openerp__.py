@@ -13,6 +13,7 @@
     'depends': [
         'base',
         'project',
+        'sale_service',
         'project_issue',
         'project_generic_close_stage'
     ],
