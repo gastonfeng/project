@@ -29,10 +29,10 @@ class ResPartner(models.Model):
         # add completion percentage in percent
         completion_percent = 0
         if self.task_planned_hours_sum > 0:
-            completion_percent = (self.task_effective_hours_sum*100) / self.task_planned_hours_sum
+            completion_percent = (self.total_timesheets_hours_sum*100) / self.task_planned_hours_sum
         self.display_name = self.name + " - [{:.1f}% - {:.1f}h / {:.1f}h]".format(
             completion_percent,
-            self.total_effective_hours_sum,
+            self.total_timesheets_hours_sum,
             self.task_planned_hours_sum
         )
 
@@ -42,10 +42,10 @@ class ResPartner(models.Model):
         for record in self:
             completion_percent = 0
             if record.task_planned_hours_sum > 0:
-                completion_percent = (record.task_effective_hours_sum * 100) / record.task_planned_hours_sum
+                completion_percent = (record.total_timesheets_hours_sum * 100) / record.task_planned_hours_sum
             name = record.name + " - [{:.1f}% - {:.1f}h / {:.1f}h]".format(
                 completion_percent,
-                record.total_effective_hours_sum,
+                record.total_timesheets_hours_sum,
                 record.task_planned_hours_sum
             )
             result.append((record.id, name))
