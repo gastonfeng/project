@@ -2,7 +2,7 @@
    Project Time Sum
 =====================================
 
-This module is an ad-don to ``service desk``.
+This module is an ad-don to ``project``.
 
 Displays the sum of planned hours & total hours in a project (sums of the containted tasks).
 
