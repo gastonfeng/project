@@ -39,11 +39,13 @@ class ResPartner(models.Model):
 
     @api.one
     def _compute_task_planned_hours_sum(self):
-        self.task_planned_hours_sum = sum([task.planned_hours for task in self.task_ids])
+        task_ids = self.env['project.task'].search([('project_id', '=', self.id)])
+        self.task_planned_hours_sum = sum([task.planned_hours for task in task_ids])
 
     @api.one
     def _compute_task_effective_hours_sum(self):
-        self.task_effective_hours_sum = sum([task.effective_hours for task in self.task_ids])
+        task_ids = self.env['project.task'].search([('project_id', '=', self.id)])
+        self.task_effective_hours_sum = sum([task.effective_hours for task in task_ids])
 
     @api.one
     def _compute_issues_effective_hours_sum(self):
