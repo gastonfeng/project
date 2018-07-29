@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="project_issue_email_matching" model="ir.actions.server">
-            <field name="name">Project issue email matching</field>
-            <field name="model_id" ref="model_project_issue"/>
-            <field name="state">code</field>
-            <field name="condition">True</field>
-            <field name="sequence">5</field>
-            <field name="code">
+<odoo>
+    <record id="project_issue_email_matching" model="ir.actions.server">
+        <field name="name">Project issue email matching</field>
+        <field name="model_id" ref="model_project_issue"/>
+        <field name="state">code</field>
+        <field name="condition">True</field>
+        <field name="sequence">5</field>
+        <field name="code">
 
 # - Set followers and subtypes
 
@@ -119,7 +118,6 @@ if teams:
                 if msg_id:
                     mail_mail_obj.send(cr, uid, [msg_id], context=context)
  
-            </field>
-        </record>
-    </data>
-</openerp>
+        </field>
+    </record>
+</odoo>

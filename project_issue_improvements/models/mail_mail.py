@@ -1,8 +1,12 @@
-﻿from openerp import models
+﻿# -*- coding: utf-8 -*-
+# (c) AbAKUS IT Solutions
 import HTMLParser
+from odoo import models
 
-class mail_mail_utilities(models.Model):
+
+class MailMailUtilities(models.Model):
     _inherit = ['mail.mail']
-   
-    def unescapeHTML(self, text):
+
+    @staticmethod
+    def unescapeHTML(text):
         return HTMLParser.HTMLParser().unescape(text)
