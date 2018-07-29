@@ -7,7 +7,8 @@ Ported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[project_time_sums]() | 9.0.1.0.0 (unported) | 
+[project_time_sums]() | 10.0.1.0.0 (unported) | 
+[project_service_desk]() | 10.0.1.0.0 (unported) | 
 
 
 Unported addons
@@ -22,7 +23,6 @@ addon | version | summary
 [project_mail_message_customized]() | 9.0.1.0.0 (unported) | 
 [project_new_fields]() | 9.0.1.0.0 (unported) | 
 [project_report]() | 9.0.1.0.0 (unported) | 
-[project_service_desk]() | 9.0.1.0.0 (unported) | 
 [project_task_attachement]() | 9.0.1.0.0 (unported) | 
 [project_task_event_calendar]() | 9.0.1.0.0 (unported) | 
 [project_task_issue_for_me]() | 9.0.1.0.0 (unported) | 
