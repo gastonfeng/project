@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_task_bu_form_" model="ir.ui.view">
+        <field name="name">project.task.bu.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="(//field[@name='company_id'])" position="after">
+                <field name="business_unit_id" context="'default_business_id': ref('user.business_id')}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
