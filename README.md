@@ -12,6 +12,7 @@ addon | version | summary
 [project_generic_close_stage](project_generic_close_stage/) | 10.0.1.0.0  | Add close stage button
 [project_issue_improvements](project_issue_improvements/) | 10.0.1.0.0 | AbAKUS issue improvements
 [project_task_issue_for_me](project_task_issue_for_me/) | 10.0.1.0.0 | Button for fast document assignment
+[project_multi_bu](project_multi_bu/) | 10.0.1.0.0 | BU for Projects
 
 Unported addons
 ---------------
