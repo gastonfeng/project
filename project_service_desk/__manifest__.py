@@ -8,6 +8,7 @@
     'depends': [
         'project',
         'project_issue_improvements',
+        'project_generic_close_stage',
         'hr_analytic_timesheet_improvements'
     ],
     'website': 'http://www.abakusitsolutions.eu',

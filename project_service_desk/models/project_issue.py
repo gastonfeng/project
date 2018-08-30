@@ -16,6 +16,7 @@ class ProjectIssueServiceDesk(models.Model):
     partner_id = fields.Many2one(default=lambda s: s._get_default_partner())
 
     def _get_default_project_id(self):
+        project_id = None
         context = dict(self.env.context)
         if 'default_analytic_account_id' in context:
             analytic_account = self.env['account.analytic.account'].browse(context['default_analytic_account_id'])
@@ -24,11 +25,12 @@ class ProjectIssueServiceDesk(models.Model):
             if analytic_account and len(analytic_account.subscription_ids) > 0:
                 if analytic_account.subscription_ids[0].project_id:
                     project_id = analytic_account.subscription_ids[0].project_id
-        if project_id:
+        if project_id is not None:
             return project_id.id
         return False
 
     def _get_default_stage_id(self):
+        project_id = None
         context = dict(self.env.context)
         default_project_id = context.get('default_project_id')
         if default_project_id:
@@ -40,11 +42,12 @@ class ProjectIssueServiceDesk(models.Model):
             if analytic_account and len(analytic_account.subscription_ids) > 0:
                 if analytic_account.subscription_ids[0].project_id:
                     project_id = analytic_account.subscription_ids[0].project_id
-        if project_id:
+        if project_id is not None:
             return self.stage_find([], project_id.id, [('fold', '=', False)])
         return False
 
     def _get_default_partner(self):
+        project_id = None
         context = dict(self.env.context)
         if 'default_project_id' in context:
             project = self.env['project.project'].browse(context['default_project_id'])
@@ -57,6 +60,6 @@ class ProjectIssueServiceDesk(models.Model):
             if analytic_account and len(analytic_account.subscription_ids) > 0:
                 if analytic_account.subscription_ids[0].project_id:
                     project_id = analytic_account.subscription_ids[0].project_id
-        if project_id:
+        if project_id is not None:
             return project_id.partner_id.id
         return False
