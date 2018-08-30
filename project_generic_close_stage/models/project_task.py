@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, exceptions, _
-
+# (c) AbAKUS IT Solutions
 import logging
+from odoo import models, fields, api, exceptions, _
+
 _logger = logging.getLogger(__name__)
-    
-    
+
+
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
@@ -17,7 +17,6 @@ class ProjectTask(models.Model):
 
     @api.one
     def action_close(self):
-
         stage = self.env['project.task.type'].search([('close_stage', '=', True)])
 
         if not stage:

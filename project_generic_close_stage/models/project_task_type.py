@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, exceptions, _
-
+# (c) AbAKUS IT Solutions
 import logging
+from odoo import models, fields, api, exceptions, _
+
 _logger = logging.getLogger(__name__)
-    
-    
+
+
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
 
     close_stage = fields.Boolean(string="Selected Close Stage", default=False)
-    
+
     def _reset_other_close_stage(self):
         types = self.env['project.task.type'].search([('id', '!=', self.id), ('close_stage', '=', True)])
 
