@@ -1,0 +1,170 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_task_recurring
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e-20180713\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-31 14:18+0000\n"
+"PO-Revision-Date: 2018-08-31 14:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_active
+msgid "Active"
+msgstr "Actif"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_user_id
+msgid "Assigned to"
+msgstr "Assigné à"
+
+#. module: project_task_recurring
+#: model:ir.actions.server,name:project_task_recurring.ir_cron_create_task_on_models_ir_actions_server
+#: model:ir.cron,cron_name:project_task_recurring.ir_cron_create_task_on_models
+#: model:ir.cron,name:project_task_recurring.ir_cron_create_task_on_models
+msgid "Create Tasks based on task models"
+msgstr "Créer une tâche sur base des models"
+
+#. module: project_task_recurring
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_form_view
+msgid "Create a task"
+msgstr "Créer une tâche"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: project_task_recurring
+#: selection:project.task.model,recurring_rule_type:0
+msgid "Day"
+msgstr "Jour"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_description
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_form_view
+msgid "Description"
+msgstr "Description"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model___last_update
+msgid "Last Modified on"
+msgstr "Dernière Modification le"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_last_created_date
+msgid "Last task created on"
+msgstr "Dernière tâche créée le"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_task_model_id
+msgid "Model"
+msgstr "Modèle"
+
+#. module: project_task_recurring
+#: selection:project.task.model,recurring_rule_type:0
+msgid "Month"
+msgstr "Mois"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_name
+msgid "Name"
+msgstr "Description"
+
+#. module: project_task_recurring
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_form_view
+msgid "Name of the task"
+msgstr "Nom de la tâche"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_project_id
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_recurring_rule_type
+msgid "Recurrency"
+msgstr "Récurrence"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_recurring_interval
+msgid "Repeat every"
+msgstr "Répéter tous les"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_start_date
+msgid "Start at"
+msgstr "Démarrer au"
+
+#. module: project_task_recurring
+#: model:ir.model,name:project_task_recurring.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_task_recurring
+#: model:ir.model,name:project_task_recurring.model_project_task_model
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_form_view
+msgid "Task model"
+msgstr "Modèle de tâche"
+
+#. module: project_task_recurring
+#: model:ir.actions.act_window,name:project_task_recurring.action_task_models
+#: model:ir.ui.menu,name:project_task_recurring.menu_task_models
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_tree_view
+msgid "Task models"
+msgstr "Modèles de tâche"
+
+#. module: project_task_recurring
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_task_count
+#: model:ir.model.fields,field_description:project_task_recurring.field_project_task_model_task_ids
+#: model:ir.ui.view,arch_db:project_task_recurring.project_task_model_form_view
+msgid "Tasks"
+msgstr "Tâches"
+
+#. module: project_task_recurring
+#: model:ir.actions.act_window,name:project_task_recurring.action_tasks_for_model
+msgid "Tasks for model"
+msgstr "Tâches du modèle"
+
+#. module: project_task_recurring
+#: selection:project.task.model,recurring_rule_type:0
+msgid "Week"
+msgstr "Semaine"
+
+#. module: project_task_recurring
+#: selection:project.task.model,recurring_rule_type:0
+msgid "Year"
+msgstr "Année"
+
