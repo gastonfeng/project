@@ -6,7 +6,9 @@
     'depends': [
         'project',
         'hr_analytic_timesheet_improvements',
-        'project_generic_close_stage'
+        'project_generic_close_stage',
+        'project_forecast',
+        'hr_holidays',
     ],
     'author': "Valentin Thirion, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
@@ -22,5 +24,6 @@ This module has been developed by Valentin Thirion @ AbAKUS it-solutions""",
         'views/service_project_task_view.xml',
         'views/service_project_timesheet_view.xml',
         'views/service_project_project_view.xml',
+        'views/service_projet_forecast_view.xml',
     ],
 }
