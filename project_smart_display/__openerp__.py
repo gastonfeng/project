@@ -20,6 +20,7 @@ This modules creates web pages that dynamically changes to present web pages or 
 This module has been developed by Valentin Thirion @ AbAKUS it-solutions""",
     'data': [
         'views/project_smart_display.xml',
+        'views/web_template.xml',
 
         'security/ir.model.access.csv',
     ],

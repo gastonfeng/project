@@ -12,12 +12,19 @@ _logger = logging.getLogger(__name__)
 
 class ProjectSmartDisplay(models.Model):
     _name = 'project.smart.display'
+    _inherit = ['website.seo.metadata', 'website.published.mixin']
 
     name = fields.Char(required=True, string="Name")
     ip_address = fields.Char(string="IP address")
     user_ids = fields.Many2many('res.users', string="Users")
     active = fields.Boolean(string="Active", default=True)
     page_ids = fields.Many2many('project.smart.display.page', string="Pages")
+
+    @api.multi
+    def _compute_website_url(self):
+        super(ProjectSmartDisplay, self)._compute_website_url()
+        for display in self:
+            race.website_url = "/smartdisplay/display/%s" % (display.id,)
 
 class ProjectSmartDisplayPage(models.Model):
     _name = 'project.smart.display.page'

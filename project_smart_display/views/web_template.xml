@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="smart_display_web_page" name="Smart Display" page="True">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h2>Smart Display!</h2>
+                        <h3><span t-field="display.name" /></h3>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</openerp>
