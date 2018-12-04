@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <template id="assets" name="smart_display assets" >
+            <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css" />
+            <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css" />
+            <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css" />
+        </template>
+
         <template id="smart_display_web_page" name="Smart Display" page="True">
-            <t t-call="website.layout">
-                <div class="oe_structure">
-                    <div class="container">
+            <html>
+                <head>
+                    <title>Smart Display</title>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                    <meta http-equiv="content-type" content="text/html, charset=utf-8" />
+
+                    <meta name="viewport" content=" width=1024, user-scalable=no"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="mobile-web-app-capable" content="yes"/>
+
+                    <t t-call-assets="web.assets_common" t-css="false" />
+                    <t t-call-assets="web.assets_backend" t-css="false" />
+                    <t t-call-assets="project_smart_display.assets"/>
+                </head>
+                <body>
+                    <div class="oe_structure">
                         <h2>Smart Display!</h2>
                         <h3><span t-field="display.name" /></h3>
                     </div>
-                </div>
-            </t>
+                </body>
+            </html>
         </template>
     </data>
 </openerp>
