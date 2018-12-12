@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <template id="smart_display_web_page" name="Smart Display" page="True">
+        <template id="smart_display_web" name="Smart Display" page="True">
             <html>
                 <head>
                     <title>Smart Display</title>
@@ -20,11 +20,38 @@
                     <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css" />
                     <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css" />
                     <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css" />
+                    <link rel="stylesheet" href="/project_smart_display/static/src/css/display_style.css" />
                 </head>
-                <body onload="startTime()">
-                    <h2><span t-field="display.name" /> <span id="date_time_clock" /></h2>
+                <body onload="startTime(); startPageManager();">
+                    <!-- Header row -->
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h2><span t-field="display.name" /></h2>
+                            <span id="display_id" style="display: none;" t-field="display.id"/>
+                        </div>
+                        <div class="col-md-5">
+                            <h2><span id="date_time_clock" /></h2>
+                        </div>
+                        <div class="col-md-2">
+                            <h2>Page <t t-if="len(display.page_ids) > 0"><span id="page_index" class="page_index">1</span></t><t t-if="len(display.page_ids) == 0">0</t>/<span t-esc="len(display.page_ids)" id="page_count" class="page_count"/>
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- Main content row -->
+                    <div class="row">
+                        <div id="main_content" class="col-md-12 main_content">
+                            <iframe class="page_iframe" style="display: none;" src="" id="page_iframe"/>
+                        </div>
+                    </div>
                 </body>
             </html>
+        </template>
+
+        <template id="smart_display_page" name="Page for Smart Display">
+            <h3><span t-field="page.name" /></h3>
+            <t t-if="page.mode == 'iframe'">
+                <iframe t-att-src="page.iframe_url" id="main_iframe"/>
+            </t>
         </template>
     </data>
 </openerp>

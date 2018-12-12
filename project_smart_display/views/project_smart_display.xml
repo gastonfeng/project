@@ -38,6 +38,7 @@
                             </h1>
                         </div>
                         <group>
+                            <field name="website_url" readonly="True" />
                             <field name="ip_address" />
                             <field name="user_ids" widget="many2many_tags" />
                             <field name="active" />
