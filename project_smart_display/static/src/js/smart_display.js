@@ -40,6 +40,10 @@ function startPageManager() {
                 'display_id': display_id,
             }).then(function (data_display) {
                 if(data_display){
+                    // Set the count
+                    page_count = parseInt(data_display['page_count']);
+                    $("#page_count").text(page_count);
+
                     ajax.jsonRpc("/smartdisplay/getnextpage/", 'call', {
                         'display_id': data_display['display_id'],
                         'index': 0,
@@ -66,6 +70,11 @@ function startPageManager() {
                 'index': index,
             }).then(function (data_page) {
                 if(data_page){
+                    // Set the count
+                    page_count = parseInt(data_page['diaplay_page_count']);
+                    $("#page_count").text(page_count);
+
+                    // If iframe, set the frame
                     if (data_page['mode'] == 'iframe') {
                         document.getElementById('page_iframe').setAttribute('src', data_page['iframe_url']);
                         document.getElementById('page_iframe').style.display = "inline";

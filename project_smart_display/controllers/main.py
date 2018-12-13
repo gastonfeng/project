@@ -56,4 +56,5 @@ class SmartDisplayPage(http.Controller):
                 'sequence': next_page.sequence,
                 'mode': next_page.mode,
                 'iframe_url': next_page.iframe_url,
+                'diaplay_page_count': len(display.page_ids),
             }
