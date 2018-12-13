@@ -34,6 +34,7 @@ class SmartDisplayPage(http.Controller):
                     'display_id': display.id,
                     'name': display.name,
                     'page_count': len(display.page_ids),
+                    'delay': display.delay,
                 }
 
     @http.route([
@@ -57,4 +58,5 @@ class SmartDisplayPage(http.Controller):
                 'mode': next_page.mode,
                 'iframe_url': next_page.iframe_url,
                 'diaplay_page_count': len(display.page_ids),
+                'display_delay': display.delay,
             }

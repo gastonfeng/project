@@ -32,7 +32,8 @@ function startPageManager() {
 
         var display_id = parseInt($("#display_id").text());
 
-        var page_count = parseInt($("#page_count").text()); // TODO replace this by a JSON REQUEST
+        var page_count = parseInt($("#page_count").text());
+        var display_delay = parseInt($("#display_delay").text());
 
         // Get first page
         delay(function(){
@@ -43,6 +44,9 @@ function startPageManager() {
                     // Set the count
                     page_count = parseInt(data_display['page_count']);
                     $("#page_count").text(page_count);
+
+                    // Set the delay
+                    $("#display_delay").text(parseInt(data_display['display_delay']));
 
                     ajax.jsonRpc("/smartdisplay/getnextpage/", 'call', {
                         'display_id': data_display['display_id'],
@@ -59,7 +63,7 @@ function startPageManager() {
             })
         });
 
-        setInterval(function() { counter() }, 30000); // And wait 30s TODO : set this param dynamically
+        setInterval(function() { counter() }, display_delay * 1000); // Multiplied by 1000 because this method wants microseconds and we manage seconds
 
         function counter() {
             var index = parseInt($("#page_index").text());

@@ -19,6 +19,7 @@ class ProjectSmartDisplay(models.Model):
     user_ids = fields.Many2many('res.users', string="Users")
     active = fields.Boolean(string="Active", default=True)
     page_ids = fields.Many2many('project.smart.display.page', string="Pages")
+    delay = fields.Integer(string="Delay (s)", default=30)
 
     @api.multi
     def _compute_website_url(self):

@@ -28,6 +28,7 @@
                         <div class="col-md-5">
                             <h2><span t-field="display.name" /></h2>
                             <span id="display_id" style="display: none;" t-field="display.id"/>
+                            <span id="display_delay" style="display: none;" t-field="display.delay"/>
                         </div>
                         <div class="col-md-5">
                             <h2><span id="date_time_clock" /></h2>
