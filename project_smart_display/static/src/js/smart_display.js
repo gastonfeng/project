@@ -2,7 +2,7 @@ function startTime() {
     var today = new Date();
     var d = today.getDate();
     var M = today.getMonth();
-    var y = today.getYear();
+    var y = today.getFullYear();
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
