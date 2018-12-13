@@ -75,7 +75,7 @@ function startPageManager() {
             }).then(function (data_page) {
                 if(data_page){
                     // Set the count
-                    page_count = parseInt(data_page['diaplay_page_count']);
+                    page_count = parseInt(data_page['display_page_count']);
                     $("#page_count").text(page_count);
 
                     // If iframe, set the frame
