@@ -11,5 +11,22 @@
                 </xpath>
 		    </field>
         </record>
+
+        <record model="ir.actions.server" id="project_issue_self_assign_action">
+            <field name="name">Assign to me</field>
+            <field name="model_id" ref="project_task_issue_for_me.model_project_issue"/>
+            <field name="state">code</field>
+            <field name="condition">True</field>
+            <field name="code">action = env['project.issue'].browse(context['active_ids']).assign_to_me()</field>
+        </record>
+
+        <record model="ir.values" id="project_issue_run_self_assign_action">
+            <field name="model_id" ref="project_task_issue_for_me.model_project_issue"/>
+            <field name="name">Assign this issue to me</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,' + str(ref('project_issue_self_assign_action'))"/>
+            <field name="key">action</field>
+            <field name="model">project.issue</field>
+        </record>
 	</data>
 </openerp>
