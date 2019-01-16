@@ -36,6 +36,7 @@
                         <group colspan="2">
                             <field name="issue_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('task_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
                             <field name="task_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('issue_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
+                            <field name="task_planned_hours" widget="float_time" attrs="{'invisible':[('task_id', '=', False)]}" readonly="True"/>
                             <field name="issue_state" attrs="{'invisible':['|', ('issue_id', '=', False), ('task_id', '!=', False)]}" readonly="True"/>
                             <field name="task_state" attrs="{'invisible':['|', ('task_id', '=', False), ('issue_id', '!=', False)]}" readonly="True"/>
                             <button name="close_task_issue" type="object" attrs="{'invisible':[('task_id', '=', False), ('issue_id', '=', False)]}" string="Close task/issue" />

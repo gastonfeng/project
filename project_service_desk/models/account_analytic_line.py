@@ -9,6 +9,8 @@ _logger = logging.getLogger(__name__)
 class AccountAnalyticLineServiceDesk(models.Model):
     _inherit = ['account.analytic.line']
 
+    task_planned_hours = fields.Float(string="Planned time on task", related='task_id.planned_hours')
+
     def _get_default_project(self):
         if self.account_id:
             if len(self.account_id.project_ids) > 0:

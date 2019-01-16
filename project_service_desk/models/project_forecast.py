@@ -22,6 +22,16 @@ class ProjectForecast(models.Model):
     project_id = fields.Many2one('project.project', string="Project")
     comment = fields.Text(string="Comment")
 
+    tasks_planned_hours = fields.Float(string="Planned time on tasks", compute='_compute_total_planned_hours')
+
+    @api.multi
+    @api.onchange('task_ids')
+    def _compute_total_planned_hours(self):
+        for forecast in self:
+            forecast.tasks_planned_hours = 0
+            for task in forecast.task_ids:
+                forecast.tasks_planned_hours += task.planned_hours
+
     @api.one
     @api.onchange('planned_time')
     def planned_time_changed(self):
@@ -59,7 +69,5 @@ class ProjectForecast(models.Model):
     def leave_changed(self):
         if self.leave_id:
             self.start_date = self.leave_id.date_from
-            self.end_date = self.leave_id.date_to
-            
-            
+            self.end_date = self.leave_id.date_to          
             
