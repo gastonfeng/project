@@ -32,6 +32,7 @@ This module has been developed by Bernard Delhez & Valentin THIRION @ AbAKUS it-
     'data': [
         'views/project_issue_view.xml',
         'views/project_task_view.xml',
+
         'data/ir_actions_server_data.xml',
         'data/project_issue_email_template.xml',
         'data/project_task_stage.xml',

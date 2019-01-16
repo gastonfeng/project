@@ -7,6 +7,7 @@ class task_from_issue(models.Model):
 
     origin_issue = fields.Many2one('project.issue', string="Origin Issue")
     origin_issue_state = fields.Char(string="Origin Issue State", compute="_compute_origin_issue_state")
+    partner_phone = fields.Char(string="Partner phone", related='partner_id.phone')
 
     @api.onchange('origin_issue')
     def _compute_origin_issue_state(self):

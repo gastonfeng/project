@@ -13,6 +13,11 @@
                     <field name="origin_issue"/>
                     <field name="origin_issue_state"/>
                 </field>
+
+                <!-- Add contact phone in Task -->
+                <field name="partner_id" position="after">
+                    <field name="partner_phone" />
+                </field>
             </field>
         </record>
     </data>

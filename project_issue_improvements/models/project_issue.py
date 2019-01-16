@@ -10,6 +10,7 @@ class project_issue_improvements(models.Model):
     customer_feedback = fields.Text('Customer Feedback')
     converted_task_state = fields.Char(string="Converted Task State", compute="_compute_converted_task_state")
     sale_subscription_id = fields.Many2one(comodel_name='sale.subscription',string="Subscription",compute='_compute_sale_subscription')
+    partner_phone = fields.Char(string="Partner phone", related='partner_id.phone')
 
     @api.one
     def _compute_sale_subscription(self):
