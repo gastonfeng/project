@@ -12,7 +12,7 @@
                     <field name="user_id" />
                     <field name="account_id" />
                     <field name="name" />
-                    <field name="unit_amount" />
+                    <field name="unit_amount" string="Duration" sum="Total time" widget="float_time"/>
                     <field name="to_invoice" />
                     <field name="on_site" />
                 </tree>
@@ -25,35 +25,38 @@
             <field name="model">account.analytic.line</field>
             <field name="arch" type="xml">
                 <form string="Worklog">
-                    <group name="global" col="4">
-                        <group colspan="2">
-                            <field name="user_id"/>
+                    <sheet>
+                        <group name="global" col="4">
+                            <group colspan="2">
+                                <field name="user_id"/>
+                            </group>
+                            <group colspan="4">
+                                <field name="account_id" invisible="1" />
+                                <field name="project_id" string="Project" domain="[('state', '!=', 'close')]" colspan="3" required="True" />
+                                <field name="partner_id" invisible="1" />
+                            </group>
+                            <group colspan="2">
+                                <field name="issue_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('task_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
+                                <field name="task_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('issue_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
+                                <field name="task_planned_hours" widget="float_time" attrs="{'invisible':[('task_id', '=', False)]}" readonly="True"/>
+                                <field name="issue_state" attrs="{'invisible':['|', ('issue_id', '=', False), ('task_id', '!=', False)]}" readonly="True"/>
+                                <field name="task_state" attrs="{'invisible':['|', ('task_id', '=', False), ('issue_id', '!=', False)]}" readonly="True"/>
+                                <button name="close_task_issue" type="object" attrs="{'invisible':[('task_id', '=', False), ('issue_id', '=', False)]}" string="Close task/issue" />
+                            </group>
+                            <group colspan="2">
+                                <field name="date_begin" string="Date" colspan="2"/>
+                                <field name="unit_amount" string="Duration" widget="float_time"/>
+                                <field name="on_site"/>
+                                <field name="to_invoice" string="invoicable at"/>
+                            </group>
                         </group>
-                        <group colspan="4">
-                            <field name="account_id" invisible="1" />
-                            <field name="project_id" string="Project" domain="[('state', '!=', 'close')]" colspan="3" required="True" />
+                        <group string="Description">
+                            <field name="name" nolabel="1"/>
                         </group>
-                        <group colspan="2">
-                            <field name="issue_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('task_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
-                            <field name="task_id" domain="[('analytic_account_id', '=', account_id), ('stage_id.closed', '=', False)]" attrs="{'invisible':[('issue_id', '!=', False)]}" context="{'default_analytic_account_id': account_id}"/>
-                            <field name="task_planned_hours" widget="float_time" attrs="{'invisible':[('task_id', '=', False)]}" readonly="True"/>
-                            <field name="issue_state" attrs="{'invisible':['|', ('issue_id', '=', False), ('task_id', '!=', False)]}" readonly="True"/>
-                            <field name="task_state" attrs="{'invisible':['|', ('task_id', '=', False), ('issue_id', '!=', False)]}" readonly="True"/>
-                            <button name="close_task_issue" type="object" attrs="{'invisible':[('task_id', '=', False), ('issue_id', '=', False)]}" string="Close task/issue" />
+                        <group>
+                            <button name="delete_worklog" type="object" string="Delete" />
                         </group>
-                        <group colspan="2">
-                            <field name="date_begin" string="Date" colspan="2"/>
-                            <field name="unit_amount" string="Duration" widget="float_time"/>
-                            <field name="on_site"/>
-                            <field name="to_invoice" string="invoicable at"/>
-                        </group>
-                    </group>
-                    <group string="Description">
-                        <field name="name" nolabel="1"/>
-                    </group>
-                    <group>
-                        <button name="delete_worklog" type="object" string="Delete" />
-                    </group>
+                    </sheet>
                 </form>
             </field>
         </record>
