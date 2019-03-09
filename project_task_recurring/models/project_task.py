@@ -1,8 +1,7 @@
 # (c) AbAKUS IT Solutions
 import logging
-from odoo import models, fields, api, _
-from datetime import date
-from datetime import timedelta
+
+from odoo import models, fields
 
 _logger = logging.getLogger(__name__)
 

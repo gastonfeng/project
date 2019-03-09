@@ -1,9 +1,11 @@
 # (c) AbAKUS IT Solutions
 import logging
-from odoo import models, fields, api, _
 from datetime import date
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
+
+from odoo import models, fields, api
 
 _logger = logging.getLogger(__name__)
 
